@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập Select Box</title>
+    <style>
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        // Bài 1
+        function showSelectedInfo() {
+            const selectBox = document.getElementById("mySelect");
+            const selectedIndex = selectBox.selectedIndex;
+            const selectedValue = selectBox.options[selectedIndex].value;
+            const selectedText = selectBox.options[selectedIndex].text;
+
+            document.getElementById("indexDisplay").innerText = "selectedIndex: " + selectedIndex;
+            document.getElementById("valueDisplay").innerText = "value: " + selectedValue;
+            document.getElementById("textDisplay").innerText = "text: " + selectedText;
+        }
+
+        // Bài 2
+        function showSelectedCountries() {
+            const selectBox = document.getElementById("countries");
+            const textarea = document.getElementById("result");
+            let selectedCountries = [];
+
+            for (let option of selectBox.options) {
+                if (option.selected) {
+                    selectedCountries.push(option.text);
+                }
+            }
+
+            textarea.value = selectedCountries.join("\n");
+        }
+    </script>
+</head>
+<body>
+    <h3>Bài 1: Hiển thị chỉ số, giá trị và text của phần tử được chọn</h3>
+    <select id="mySelect">
+        <option value="val1">sea two</option>
+        <option value="val2">val2</option>
+    </select>
+    <button onclick="showSelectedInfo()">Show Index</button>
+    <div id="indexDisplay"></div>
+    <div id="valueDisplay"></div>
+    <div id="textDisplay"></div>
+
+    <hr>
+
+    <h3>Bài 2: Hiển thị các quốc gia đã chọn</h3>
+    <p>Hãy chọn các quốc gia bạn đã từng làm việc:</p>
+    <select id="countries" multiple size="5">
+        <option>VietNam</option>
+        <option>TrungQuoc</option>
+        <option>Singapore</option>
+        <option>Malaysia</option>
+        <option>Philips</option>
+    </select>
+    <br><br>
+    <button onclick="showSelectedCountries()">Chọn</button>
+    <p>Bạn đã từng làm việc tại:</p>
+    <textarea id="result" readonly></textarea>
+</body>
+</html>

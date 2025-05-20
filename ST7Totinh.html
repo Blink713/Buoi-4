@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>To tinh lan thu 7</title> 
+<body>
+  <script language ="javascript">
+    function noProcess()
+    {
+        btnNo =document.getElementById("btnNo");
+        //alert(btnNo.offsetWidth);
+        //alert (btnNo.offsetHeight);
+
+        //Lay so ngau nhien cho Left va Top
+        maxX = Math.floor(Math.random()* window.innerWidth);
+        maxY = Math.floor(Math.random()* window.innerHeight);
+
+        //Set vi tri moi cho nut
+        btnNo.style.left = 250+"px";
+        btnNo.style.top = 250+"px";
+    }
+
+    function yesProcess(){
+      //Hoi lai co chac chan hay ko
+      tloi = confirm("Ban co chac chan hay khong?")
+      if(tloi){
+        //tra loi co
+        _status = document.getElementById("status");
+        _status.innerHTML = "Minh di choi nhe";
+      } else {
+        //tra loi khong
+      }
+    }
+    
+  </script>
+</body>
+<body>
+    <h2>Ban lam ny minh nhe?</h2>
+    <input type = "button" id ="btnYes" value = "Dong y" onclick="yesProcess()">
+    <input type="button" id="btnNo" value="De suy nghi them" onclick ="noProcess()">
+</body>
+</head>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dang nhap S7</title>
+    <style>
+        div{
+            color: red;
+        }
+        #tbao_nname{
+            display: none;
+        }
+        #tbao_upass{
+            display: none;
+        }
+        
+    </style>
+    <script lang="javascript">
+        function checkLogin(){
+            uname = document.getElementById("uname");
+            upass = document.getElementById("upass");
+            tbao_uname = document.getElementById("tbao_uname");
+            tbao_upass = document.getElementById("tbao_upass");
+            //Kiem tra usernam
+            if(uname.value == ""){
+                //hien thi thong bao
+                tbao_uname.style.display = "block";
+
+                //de con tro chuot vao trong o username
+                uname.focus();
+
+                //dung form
+                return false;
+            }
+
+            //Kiem tra userpass
+            if(upass.value == ""){
+                //hien thi thong bao
+                tbao_upass.style.display = "block";
+
+                //de con tro chuot vao trong o username
+                upass.focus();
+
+                //dung form
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="" method="post">
+        <h2>Dang nhap</h2>
+        Username <input type="text" name="uname" id="uname">
+        <div id="tbao_uname"> Ban chua nhap username</div>
+        <br>
+        Password <input type="text" name="upass" id="upass">
+        <div id="tbao_upass"> Ban chua nhap uspassword</div>
+        <br>
+        <input type="submit" value="login" onclick="return checkLogin()">
+    </form>
+
+    <script language = "javascript">
+        function getIndex(){
+            //Lay doi tuong Select
+            sel_opt = document.getElementById("sel_opt");
+
+            //Lay thu tu cua option
+            sel_index = sel_opt.selectedIndex;
+
+            //Dua noi dung vao o tuong ung
+            document.getElementById("selectedIndex").value=sel_index;
+            document.getElementById("val").value=sel_opt.options[sel_index].value;
+            document.getElementById("opttext").value=sel_opt.options[sel_index].text;
+            //alert(sel_opt.options[sel_index].value);
+            //alert(sel_opt.options[sel_index].text);
+        }
+
+    </script>
+
+    <br>
+    <select name="" id="sel_opt">
+        <option value="val0">sea zero</option>
+        <option value="val1">sea one</option>
+        <option value="val2">sea two</option>
+        <option value="val3">sea three</option>
+    </select>
+    <input type="button" value="Show Index" onclick="getIndex()"><br>
+    <input type="text" name="" id="selectedIndex"> selectedIndex
+    <br>
+    <input tpye="text" name="" id="val"> option[].val
+    <br>
+    <input tpye="text" name="" id="opttext"> option[].text
+
+</body>
+</html>

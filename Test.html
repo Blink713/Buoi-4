@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tỏ tình lần thứ 7</title> 
+</head>
+
+<body>
+  <script>
+    function noProcess() {
+      const btnNo = document.getElementById("btnNo");
+
+      // Lấy vị trí ngẫu nhiên trong khung trình duyệt
+      const maxX = window.innerWidth - btnNo.offsetWidth;
+      const maxY = window.innerHeight - btnNo.offsetHeight;
+      const randX = Math.floor(Math.random() * maxX);
+      const randY = Math.floor(Math.random() * maxY);
+
+      // Di chuyển nút
+      btnNo.style.left = randX + "px";
+      btnNo.style.top = randY + "px";
+    }
+
+    function yesProcess() {
+      const tloi = confirm("Bạn có chắc chắn không?");
+      if (tloi) {
+        const status = document.getElementById("status");
+        status.innerHTML = "Mình đi chơi nhé 💖";
+      }
+    }
+  </script>
+
+  <h2>Bạn làm người yêu mình nhé?</h2>
+  <input type="button" id="btnYes" value="Đồng ý" onclick="yesProcess()">
+  <input type="button" id="btnNo" value="Để suy nghĩ thêm" onclick="noProcess()" style="position:absolute;">
+  <p id="status"></p>
+</body>
+</html>

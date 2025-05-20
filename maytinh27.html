@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>May tinh cam tay</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+    
+        .calculator {
+          background-color: #222;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    
+        .display {
+          background-color: #000;
+          color: #0f0;
+          font-size: 2em;
+          text-align: right;
+          padding: 10px;
+          border-radius: 8px;
+          margin-bottom: 15px;
+          min-width: 260px;
+        }
+    
+        .buttons {
+          display: grid;
+          grid-template-columns: repeat(4, 60px);
+          gap: 10px;
+        }
+    
+        .buttons button {
+          padding: 15px;
+          font-size: 1.2em;
+          border: none;
+          border-radius: 8px;
+          background-color: #333;
+          color: #fff;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+    
+        .buttons button:hover {
+          background-color: #555;
+        }
+    
+        .clear {
+          background-color: #dc3545;
+        }
+    
+        .clear:hover {
+          background-color: #c82333;
+        }
+    
+        .equal {
+          background-color: #28a745;
+          grid-column: span 2;
+        }
+    
+        .equal:hover {
+          background-color: #218838;
+        }
+    
+        .zero {
+          grid-column: span 3;
+        }
+      </style>
+</head>
+<body>
+
+    <div class="calculator">
+      <div id="display" class="display">0</div>
+      <div class="buttons">
+        <!-- Hàng 1 -->
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('+')" class="operator">+</button>
+  
+        <!-- Hàng 2 -->
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('-')" class="operator">−</button>
+  
+        <!-- Hàng 3 -->
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('*')" class="operator">×</button>
+  
+        <!-- Hàng 4 -->
+        <button onclick="appendValue('0')" class="zero">0</button>
+        <button onclick="appendValue('/')" class="operator">÷</button>
+  
+        <!-- Hàng 5 -->
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculateResult()" class="equal">=</button>
+        <button onclick="clearDisplay()" class="clear">C</button>
+      </div>
+    </div>
+  
+    <script>
+      let display = document.getElementById('display');
+      let currentInput = '';
+  
+      function appendValue(value) {
+        if (display.innerText === '0' || display.innerText === 'Error') {
+          currentInput = value;
+        } else {
+          currentInput += value;
+        }
+        display.innerText = currentInput;
+      }
+  
+      function clearDisplay() {
+        currentInput = '';
+        display.innerText = '0';
+      }
+  
+      function calculateResult() {
+        try {
+          let result = eval(currentInput);
+          display.innerText = result;
+          currentInput = result.toString();
+        } catch (e) {
+          display.innerText = 'Error';
+          currentInput = '';
+        }
+      }
+    </script>
+  
+  </body>
+  </html>
